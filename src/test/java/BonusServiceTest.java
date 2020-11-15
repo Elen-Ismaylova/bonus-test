@@ -12,7 +12,7 @@ class BonusServiceTest {
         BonusService service = new BonusService();
 
         long amount = 1000_60;
-        boolean registered = true;
+        boolean registered = false;
         long expected = 30;
         long actual = service.calculate(amount, registered);
 
@@ -42,6 +42,21 @@ class BonusServiceTest {
         long amount = 1_000_000_60;
         boolean registered = false;
         long expected = 500;
+        long actual = service.calculate(amount, registered);
+
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+
+    void shouldCalculateNotRegisteredAndUnderLimit() {
+
+        BonusService service = new BonusService();
+
+        long amount = 1000_60;
+        boolean registered = false;
+        long expected = 30;
         long actual = service.calculate(amount, registered);
 
         assertEquals(expected, actual);
